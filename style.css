@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+
+body{
+    background-color: #121213;
+}
+
+hr{
+    background-color: #3a3a3c;
+}
+
+h1{
+    font-family: 'Young Serif',sans-serif;
+    color: white;
+    text-align: center;
+}
