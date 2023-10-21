@@ -1,15 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 
-body{
+body {
     background-color: #121213;
+    margin: 0;
+    padding: 0;
 }
 
-hr{
+hr {
     background-color: #3a3a3c;
 }
 
-h1{
-    font-family: 'Young Serif',sans-serif;
+h1 {
+    font-family: 'Young Serif', sans-serif;
     color: white;
     text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 53px 53px 53px 53px 53px;
+    gap: 5px;
+    place-content: center;
+}
+
+.container div{
+    border: 2px solid #3a3a3c;
+    height: 3.1rem;
+    width: 3rem;
+    margin: 0;
+    padding:0;
+}
+
+input{
+    caret-color: transparent;
+    width: inherit;
+    margin: 0;
+    padding: 0;
+    height: inherit;
+    background-color: transparent;
+    border:none;
+    outline: none;
 }
