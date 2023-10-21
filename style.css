@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Young+Serif&display=swap');
 body {
     background-color: #121213;
     margin: 0;
@@ -24,20 +24,25 @@ h1 {
 }
 
 .container div{
-    border: 2px solid #3a3a3c;
     height: 3.1rem;
     width: 3rem;
     margin: 0;
     padding:0;
+    margin-bottom: 5px;
 }
 
 input{
     caret-color: transparent;
+    border: 2px solid #3a3a3c;
     width: inherit;
     margin: 0;
     padding: 0;
     height: inherit;
     background-color: transparent;
-    border:none;
     outline: none;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat',sans-serif;
 }
+
