@@ -7,42 +7,33 @@ body {
 }
 
 hr {
-    background-color: #3a3a3c;
+    color: #3a3a3c;
 }
 
 h1 {
     font-family: 'Young Serif', sans-serif;
     color: white;
     text-align: center;
+    margin-bottom: 0;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 53px 53px 53px 53px 53px;
-    gap: 5px;
-    place-content: center;
+.row-1, .row-2, .row-3, .row-4, .row-5, .row-6 {
+    display: flex;
+    justify-content: center;
+
 }
 
-.container div{
-    height: 3.1rem;
-    width: 3rem;
-    margin: 0;
-    padding:0;
-    margin-bottom: 5px;
-}
-
-input{
-    caret-color: transparent;
-    border: 2px solid #3a3a3c;
-    width: inherit;
-    margin: 0;
-    padding: 0;
-    height: inherit;
-    background-color: transparent;
-    outline: none;
-    font-size: 30px;
+.box{
+    font-family: 'Young Serif',sans-serif;
     text-align: center;
+    font-size: 35px;
     color: white;
-    font-family: 'Montserrat',sans-serif;
 }
 
+
+.box1, .box2, .box3, .box4, .box5 {
+    border: 2px solid #3a3a3c;
+    height: 3rem;
+    width: 3rem;
+    margin: 2.5px;
+}
