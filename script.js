@@ -3,8 +3,49 @@ var j = 1;
 var moveNext = false;
 var animationInProgress = false;
 
+// Function to make a guess using the Wordle API
+async function makeGuess(guess) {
+    try {
+        const response = await fetch('https://wordle-api.vercel.app/api/wordle', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ guess }),
+        });
 
-var answer = "JOKER";
+        const data = await response.json();
+
+        if (data.was_correct) {
+            // Handle correct guess: Set box style to green
+            const boxes = document.querySelectorAll('.row-' + j + ' .box');
+            boxes.forEach((box) => {
+                box.style.backgroundColor = "#538d4e";
+                box.style.border = "2px solid #538d4e";
+            });
+        } else {
+            // Handle incorrect guess
+            const boxes = document.querySelectorAll('.row-' + j + ' .box');
+            boxes.forEach((box, index) => {
+                if (data.character_info[index].scoring.in_word && data.character_info[index].scoring.correct_idx) {
+                    // In word and correct position: Set box style to green
+                    box.style.backgroundColor = "#538d4e";
+                    box.style.border = "2px solid #538d4e";
+                } else if (data.character_info[index].scoring.in_word) {
+                    // In word but incorrect position: Set box style to yellow
+                    box.style.backgroundColor = "#b59f3b";
+                    box.style.border = "2px solid #b59f3b";
+                } else {
+                    // Not in word: Set box style to gray
+                    box.style.backgroundColor = "#3a3a3c";
+                    box.style.border = "2px solid #3a3a3c";
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error making guess:', error);
+    }
+}
 
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
@@ -29,39 +70,16 @@ document.addEventListener('keydown', function (event) {
     }
 
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
-
-        var box1 = document.querySelector('.row-' + j + ' .box1');
-        var box2 = document.querySelector('.row-' + j + ' .box2');
-        var box3 = document.querySelector('.row-' + j + ' .box3');
-        var box4 = document.querySelector('.row-' + j + ' .box4');
-
-
-        function handleBox(box, index) {
-            setTimeout(function () {
-                box.classList.add('flip');
-                if (answer.includes(box.textContent) && answer[index] === box.textContent) {
-                    box.style.backgroundColor = "#538d4e";
-                    box.style.border = "2px solid #538d4e";
-                } else if (answer.includes(box.textContent)) {
-                    box.style.backgroundColor = "#b59f3b";
-                    box.style.border = "2px solid #b59f3b";
-                } else {
-                    box.style.backgroundColor = "#3a3a3c";
-                    box.style.border = "2px solid #3a3a3c";
-                }
-            }, index * 500);
+        var guess = '';
+        for (var k = 1; k <= 5; k++) {
+            guess += document.querySelector('.row-' + j + ' .box' + k).textContent;
         }
 
-        handleBox(box1, 0);
-        handleBox(box2, 1);
-        handleBox(box3, 2);
-        handleBox(box4, 3);
-        handleBox(box5, 4);
+        makeGuess(guess);
 
-        if (answer[0] == box1.textContent && answer[1] == box2.textContent && answer[2] == box3.textContent && answer[3] == box4.textContent && answer[4] == box5.textContent) {
-            return;
+        if (i === 5) {
+            j++;
+            i = 1;
         }
-        j++;
-        i = 1;
     }
 });
