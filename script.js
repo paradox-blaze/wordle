@@ -1,21 +1,10 @@
-
 var i = 1;
 var j = 1;
 var moveNext = false;
 var animationInProgress = false;
 
-async function getRandomWord() {
-    try {
-        const response = await fetch('https://random-word-api.herokuapp.com/word?length=5');
-        const data = await response.json();
-        return data[0].toUpperCase();
-    } catch (error) {
-        console.error("Error fetching random word",error);
-        return null;
-    }
-}
 
-var answer = getRandomWord();
+var answer = "JOKER";
 
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
@@ -40,10 +29,12 @@ document.addEventListener('keydown', function (event) {
     }
 
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
+
         var box1 = document.querySelector('.row-' + j + ' .box1');
         var box2 = document.querySelector('.row-' + j + ' .box2');
         var box3 = document.querySelector('.row-' + j + ' .box3');
         var box4 = document.querySelector('.row-' + j + ' .box4');
+
 
         function handleBox(box, index) {
             setTimeout(function () {
