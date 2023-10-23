@@ -1,9 +1,21 @@
-var answer = "JOKER";
 
 var i = 1;
 var j = 1;
 var moveNext = false;
 var animationInProgress = false;
+
+async function getRandomWord() {
+    try {
+        const response = await fetch('https://random-word-api.herokuapp.com/word?length=5');
+        const data = await response.json();
+        return data[0].toUpperCase();
+    } catch (error) {
+        console.error("Error fetching random word",error);
+        return null;
+    }
+}
+
+var answer = getRandomWord();
 
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
