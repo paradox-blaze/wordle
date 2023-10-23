@@ -1,10 +1,14 @@
 var i = 1;
 var j = 1;
-var moveNext = false;
-var animationInProgress = false;
-
-
 var answer = "JOKER";
+
+
+function getLetter(button) {
+    var buttonValue = button.value;
+    var event = new Event('keydown');
+    event.key = buttonValue;
+    document.dispatchEvent(event);
+}
 
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
