@@ -5,15 +5,11 @@ link[rel="icon"] {
     transform: scale(2);
 }
 
-.box-transition {
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
-}
 
-.box-flip {
-    transform: rotateY(180deg);
+.flip{
+    transform: rotateX(360deg);
+    transition: 0.5s ease-in;
 }
-
 
 body {
     background-color: #121213;

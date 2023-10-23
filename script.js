@@ -34,96 +34,41 @@ document.addEventListener('keydown', function (event) {
         var box3 = document.querySelector('.row-' + j + ' .box3');
         var box4 = document.querySelector('.row-' + j + ' .box4');
 
-        if (answer.includes(box1.textContent) && answer[0] === box1.textContent) {
-            box1.style.backgroundColor = "#538d4e";
-            box1.style.border = "2px solid #538d4e";
+
+        function handleBox(box, index) {
+            setTimeout(function () {
+                box.classList.add('flip');
+                if (answer.includes(box.textContent) && answer[index] === box.textContent) {
+                    box.style.backgroundColor = "#538d4e";
+                    box.style.border = "2px solid #538d4e";
+                } else if (answer.includes(box.textContent)) {
+                    box.style.backgroundColor = "#b59f3b";
+                    box.style.border = "2px solid #b59f3b";
+                } else {
+                    box.style.backgroundColor = "#3a3a3c";
+                    box.style.border = "2px solid #3a3a3c";
+                }
+            }, index * 500);
         }
 
-        else if (answer.includes(box1.textContent)) {
-            box1.style.backgroundColor = "#b59f3b";
-            box1.style.border = "2px solid #b59f3b";
-        }
-
-        else {
-            box1.style.backgroundColor = "#3a3a3c";
-            box1.style.border = "2px solid #3a3a3c"
-        }
-
-
-
-        if (answer.includes(box2.textContent) && answer[1] === box2.textContent) {
-            box2.style.backgroundColor = "#538d4e";
-            box2.style.border = "2px solid #538d4e";
-        }
-
-        else if (answer.includes(box2.textContent)) {
-            box2.style.backgroundColor = "#b59f3b";
-            box2.style.border = "2px solid #b59f3b";
-        }
-
-        else {
-            box2.style.backgroundColor = "#3a3a3c";
-            box2.style.border = "2px solid #3a3a3c"
-        }
+        handleBox(box1, 0);
+        handleBox(box2, 1);
+        handleBox(box3, 2);
+        handleBox(box4, 3);
+        handleBox(box5, 4);
 
 
 
 
-        if (answer.includes(box3.textContent) && answer[2] === box3.textContent) {
-            box3.style.backgroundColor = "#538d4e";
-            box3.style.border = "2px solid #538d4e";
-        }
-
-        else if (answer.includes(box3.textContent)) {
-            box3.style.backgroundColor = "#b59f3b";
-            box3.style.border = "2px solid #b59f3b";
-        }
-
-        else {
-            box3.style.backgroundColor = "#3a3a3c";
-            box3.style.border = "2px solid #3a3a3c"
-        }
-
-
-
-        if (answer.includes(box4.textContent) && answer[3] === box4.textContent) {
-            box4.style.backgroundColor = "#538d4e";
-            box4.style.border = "2px solid #538d4e";
-        }
-
-        else if (answer.includes(box4.textContent)) {
-            box4.style.backgroundColor = "#b59f3b";
-            box4.style.border = "2px solid #b59f3b";
-        }
-
-        else {
-            box4.style.backgroundColor = "#3a3a3c";
-            box4.style.border = "2px solid #3a3a3c"
-        }
-
-
-
-        if (answer.includes(box5.textContent) && answer[4] === box5.textContent) {
-            box5.style.backgroundColor = "#538d4e";
-            box5.style.border = "2px solid #538d4e";
-        }
-
-        else if (answer.includes(box5.textContent)) {
-            box5.style.backgroundColor = "#b59f3b";
-            box5.style.border = "2px solid #b59f3b";
-        }
-
-        else {
-            box5.style.backgroundColor = "#3a3a3c";
-            box5.style.border = "2px solid #3a3a3c"
-        }
 
         if (answer[0] == box1.textContent && answer[1] == box2.textContent && answer[2] == box3.textContent && answer[3] == box4.textContent && answer[4] == box5.textContent) {
-            return;
-        }
 
+            return;
+
+        }
         j++;
         i = 1;
+
     }
 });
 
