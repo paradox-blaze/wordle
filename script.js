@@ -1,9 +1,9 @@
-var answer = "JOKER"
+var answer = "JOKER";
 
 var i = 1;
 var j = 1;
 var moveNext = false;
-
+var animationInProgress = false;
 
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
@@ -27,13 +27,11 @@ document.addEventListener('keydown', function (event) {
         box.style.border = '2px solid #3a3a3c';
     }
 
-
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
         var box1 = document.querySelector('.row-' + j + ' .box1');
         var box2 = document.querySelector('.row-' + j + ' .box2');
         var box3 = document.querySelector('.row-' + j + ' .box3');
         var box4 = document.querySelector('.row-' + j + ' .box4');
-
 
         function handleBox(box, index) {
             setTimeout(function () {
@@ -57,19 +55,10 @@ document.addEventListener('keydown', function (event) {
         handleBox(box4, 3);
         handleBox(box5, 4);
 
-
-
-
-
         if (answer[0] == box1.textContent && answer[1] == box2.textContent && answer[2] == box3.textContent && answer[3] == box4.textContent && answer[4] == box5.textContent) {
-
             return;
-
         }
         j++;
         i = 1;
-
     }
 });
-
-
