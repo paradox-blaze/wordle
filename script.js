@@ -15,6 +15,9 @@ document.addEventListener('keydown', function (event) {
     if (j > 6) {
         return;
     }
+    if (event.key === 'Enter') {
+        event.preventDefault();
+    }
 
     var box = document.querySelector('.row-' + j + ' .box' + i);
 
