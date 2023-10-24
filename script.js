@@ -1,6 +1,7 @@
 var i = 1;
 var j = 1;
-var answer = "JOKER";
+var answer = "FOODS";
+
 
 
 function getLetter(button) {
@@ -10,6 +11,23 @@ function getLetter(button) {
     document.dispatchEvent(event);
 }
 
+function getFrequency(word) {
+    var frequency = {};
+
+
+    for (let i = 0; i < 6; i++) {
+        var letter = word[i];
+
+        if (frequency[letter]) {
+            frequency[letter]++;
+        }
+        else {
+            frequency[letter] = 1;
+        }
+    }
+
+    return frequency;
+}
 
 
 document.addEventListener('keydown', function (event) {
@@ -39,11 +57,13 @@ document.addEventListener('keydown', function (event) {
 
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
 
+        var answerFrequency = getFrequency(answer);
 
         var box1 = document.querySelector('.row-' + j + ' .box1');
         var box2 = document.querySelector('.row-' + j + ' .box2');
         var box3 = document.querySelector('.row-' + j + ' .box3');
         var box4 = document.querySelector('.row-' + j + ' .box4');
+
 
         var button1 = document.querySelector('button[value="' + box1.textContent + '"]');
         var button2 = document.querySelector('button[value="' + box2.textContent + '"]');
@@ -55,15 +75,24 @@ document.addEventListener('keydown', function (event) {
 
         function handleBox(box, index, button) {
             setTimeout(function () {
+                var letter = getFrequency(box.textContent);
                 box.classList.add('flip');
                 if (answer.includes(box.textContent) && answer[index] === box.textContent) {
+                    answerFrequency[box.textContent]--;
                     box.style.backgroundColor = "#538d4e";
                     box.style.border = "2px solid #538d4e";
                     button.style.backgroundColor = "#538d4e";
                     button.style.border = "2px solid #538d4e";
                 } else if (answer.includes(box.textContent)) {
-                    box.style.backgroundColor = "#b59f3b";
-                    box.style.border = "2px solid #b59f3b";
+                    if (answerFrequency[box.textContent] > 0) {
+                        box.style.backgroundColor = "#b59f3b";
+                        box.style.border = "2px solid #b59f3b";
+                        answerFrequency[box.textContent]--;
+                    }
+                    else {
+                        box.style.backgroundColor = "#3a3a3c";
+                        box.style.border = "2px solid #3a3a3c";
+                    }
                     if (getComputedStyle(button).backgroundColor !== 'rgb(83, 141, 78)') {
                         button.style.backgroundColor = "#b59f3b";
                         button.style.border = "2px solid #b59f3b";
