@@ -1,7 +1,7 @@
 var i = 1;
 var j = 1;
 var answer = "FOODS";
-
+ 
 
 
 function getLetter(button) {
@@ -105,6 +105,8 @@ document.addEventListener('keydown', function (event) {
                 }
             }, index * 500);
         }
+
+        
 
         handleBox(box1, 0, button1);
         handleBox(box2, 1, button2);
