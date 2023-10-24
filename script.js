@@ -61,7 +61,7 @@ document.addEventListener('keydown', function (event) {
                     box.style.border = "2px solid #538d4e";
                     button.style.backgroundColor = "#538d4e";
                     button.style.border = "2px solid #538d4e";
-                } else if (answer.includes(box.textContent) && letter) {
+                } else if (answer.includes(box.textContent)) {
                     box.style.backgroundColor = "#b59f3b";
                     box.style.border = "2px solid #b59f3b";
                     if (getComputedStyle(button).backgroundColor !== 'rgb(83, 141, 78)') {
