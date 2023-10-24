@@ -10,6 +10,8 @@ function getLetter(button) {
     document.dispatchEvent(event);
 }
 
+
+
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
     if (j > 6) {
@@ -59,7 +61,7 @@ document.addEventListener('keydown', function (event) {
                     box.style.border = "2px solid #538d4e";
                     button.style.backgroundColor = "#538d4e";
                     button.style.border = "2px solid #538d4e";
-                } else if (answer.includes(box.textContent)) {
+                } else if (answer.includes(box.textContent) && letter) {
                     box.style.backgroundColor = "#b59f3b";
                     box.style.border = "2px solid #b59f3b";
                     if (getComputedStyle(button).backgroundColor !== 'rgb(83, 141, 78)') {
