@@ -1,7 +1,8 @@
 var i = 1;
 var j = 1;
+
 var answer = "FOODS";
- 
+
 
 
 function getLetter(button) {
@@ -29,12 +30,13 @@ function getFrequency(word) {
     return frequency;
 }
 
+var animationPlayed = false;
+
 
 document.addEventListener('keydown', function (event) {
     var box5 = document.querySelector('.row-' + j + ' .box5');
-    if (j > 6) {
-        return;
-    }
+
+
     if (event.key === 'Enter') {
         event.preventDefault();
     }
@@ -57,6 +59,8 @@ document.addEventListener('keydown', function (event) {
 
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
 
+
+
         var answerFrequency = getFrequency(answer);
 
         var box1 = document.querySelector('.row-' + j + ' .box1');
@@ -71,11 +75,11 @@ document.addEventListener('keydown', function (event) {
         var button4 = document.querySelector('button[value="' + box4.textContent + '"]');
         var button5 = document.querySelector('button[value="' + box5.textContent + '"]');
 
-
+        j++;
+        i = 1;
 
         function handleBox(box, index, button) {
             setTimeout(function () {
-                var letter = getFrequency(box.textContent);
                 box.classList.add('flip');
                 if (answer.includes(box.textContent) && answer[index] === box.textContent) {
                     answerFrequency[box.textContent]--;
@@ -106,18 +110,42 @@ document.addEventListener('keydown', function (event) {
             }, index * 500);
         }
 
-        
 
         handleBox(box1, 0, button1);
         handleBox(box2, 1, button2);
         handleBox(box3, 2, button3);
         handleBox(box4, 3, button4);
         handleBox(box5, 4, button5);
+        var row6box1 = document.querySelector('.row-6 .box1');
+        var row6box2 = document.querySelector('.row-6 .box2');
+        var row6box3 = document.querySelector('.row-6 .box3');
+        var row6box4 = document.querySelector('.row-6 .box4');
+        var row6box5 = document.querySelector('.row-6 .box5');
+
 
         if (answer[0] == box1.textContent && answer[1] == box2.textContent && answer[2] == box3.textContent && answer[3] == box4.textContent && answer[4] == box5.textContent) {
+
+            setTimeout(function () {
+                var victory = document.querySelector('.victory');
+                victory.style.display = 'block';
+                victory.style.animationPlayState = 'running';
+
+            }, 2500);
+
             return;
         }
-        j++;
-        i = 1;
+        else if (row6box1.textContent && row6box2.textContent && row6box3.textContent && row6box4.textContent && row6box5.textContent) {
+            setTimeout(function () {
+                var loss = document.querySelector('.loss')
+                loss.style.display = 'block';
+                loss.style.animationPlayState = 'running';
+
+
+            }, 2500);
+            return;
+        }
     }
+
+
+
 });

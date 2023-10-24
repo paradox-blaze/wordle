@@ -6,6 +6,58 @@ link[rel="icon"] {
 }
 
 
+.victory {
+    display: none;
+
+    padding: 1rem;
+    z-index: 2;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background-color: #121213;
+    width: 25rem;
+    border: 1px solid #3a3a3c;
+
+    animation: slideDown 0.3s ease forwards paused;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 34%;
+
+}
+
+.loss {
+    display: none;
+    padding: 1rem;
+    z-index: 2;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background-color: #121213;
+    width: 25rem;
+    border: 1px solid #3a3a3c;
+    animation: slideDown 0.3s ease forwards paused;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 34%;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
 .flip {
     transform: rotateX(360deg);
     transition: 0.5s ease-in;
@@ -83,7 +135,8 @@ button {
     margin: 3px;
 }
 
-#enter, #back{
+#enter,
+#back {
     width: 4rem;
     font-size: 15px;
 }
