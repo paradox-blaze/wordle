@@ -62,7 +62,7 @@ document.addEventListener('keydown', function (event) {
                 } else if (answer.includes(box.textContent)) {
                     box.style.backgroundColor = "#b59f3b";
                     box.style.border = "2px solid #b59f3b";
-                    if (button.style.backgroundColor != "#538d4e") {
+                    if (getComputedStyle(button).backgroundColor !== 'rgb(83, 141, 78)') {
                         button.style.backgroundColor = "#b59f3b";
                         button.style.border = "2px solid #b59f3b";
                     }
