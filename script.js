@@ -3,7 +3,7 @@ var j = 1;
 
 var answer = "FOODS";
 
-
+var gameEnded = false;
 
 function getLetter(button) {
     var buttonValue = button.value;
@@ -30,10 +30,13 @@ function getFrequency(word) {
     return frequency;
 }
 
-var animationPlayed = false;
+var animationInProgress = false;
 
 
 document.addEventListener('keydown', function (event) {
+    if (animationInProgress === true || gameEnded === true) {
+        return;
+    }
     var box5 = document.querySelector('.row-' + j + ' .box5');
 
 
@@ -57,9 +60,10 @@ document.addEventListener('keydown', function (event) {
         box.style.border = '2px solid #3a3a3c';
     }
 
+
+
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
-
-
+        animationInProgress = true;
 
         var answerFrequency = getFrequency(answer);
 
@@ -79,6 +83,8 @@ document.addEventListener('keydown', function (event) {
         i = 1;
 
         function handleBox(box, index, button) {
+
+
             setTimeout(function () {
                 box.classList.add('flip');
                 if (answer.includes(box.textContent) && answer[index] === box.textContent) {
@@ -116,6 +122,10 @@ document.addEventListener('keydown', function (event) {
         handleBox(box3, 2, button3);
         handleBox(box4, 3, button4);
         handleBox(box5, 4, button5);
+
+        setTimeout(function () {
+            animationInProgress = false;
+        }, 2500)
         var row6box1 = document.querySelector('.row-6 .box1');
         var row6box2 = document.querySelector('.row-6 .box2');
         var row6box3 = document.querySelector('.row-6 .box3');
@@ -126,6 +136,7 @@ document.addEventListener('keydown', function (event) {
         if (answer[0] == box1.textContent && answer[1] == box2.textContent && answer[2] == box3.textContent && answer[3] == box4.textContent && answer[4] == box5.textContent) {
 
             setTimeout(function () {
+                gameEnded = true;
                 var victory = document.querySelector('.victory');
                 victory.style.display = 'block';
                 victory.style.animationPlayState = 'running';
@@ -136,6 +147,7 @@ document.addEventListener('keydown', function (event) {
         }
         else if (row6box1.textContent && row6box2.textContent && row6box3.textContent && row6box4.textContent && row6box5.textContent) {
             setTimeout(function () {
+                gameEnded = true;
                 var loss = document.querySelector('.loss')
                 loss.style.display = 'block';
                 loss.style.animationPlayState = 'running';
