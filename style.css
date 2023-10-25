@@ -12,7 +12,7 @@ link[rel="icon"] {
 }
 
 .victory {
-    
+
     display: none;
     padding: 1rem;
     z-index: 2;
@@ -26,6 +26,21 @@ link[rel="icon"] {
     animation: slideDown 0.3s ease forwards paused;
     position: absolute;
 
+}
+
+.wrongWord {
+    display: none;
+    padding: 1rem;
+    z-index: 2;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background-color: #121213;
+    width: 25rem;
+    border: 1px solid #3a3a3c;
+
+    animation: slideDown 0.3s ease forwards paused;
+    position: absolute;
 }
 
 .loss {
@@ -43,6 +58,7 @@ link[rel="icon"] {
 
 }
 
+
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
@@ -54,9 +70,6 @@ link[rel="icon"] {
         opacity: 1;
     }
 }
-
-
-
 
 .flip {
     transform: rotateX(360deg);
