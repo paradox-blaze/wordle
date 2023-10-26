@@ -4655,6 +4655,7 @@ const allWords = ALL_WORDS.map(str => str.toUpperCase());
 var wordSet = new Set(allWords);
 
 
+
 document.addEventListener('keydown', function (event) {
     if (animationInProgress === true || gameEnded === true) {
         return;
@@ -4685,6 +4686,7 @@ document.addEventListener('keydown', function (event) {
 
 
     if (event.key === 'Enter' && i >= 5 && box5.textContent) {
+        var doubleLetters = false;
         function getGuess() {
             let guess = '';
             for (let k = 1; k <= 5; k++) {
@@ -4741,6 +4743,7 @@ document.addEventListener('keydown', function (event) {
                         button.style.backgroundColor = "#538d4e";
                         button.style.border = "2px solid #538d4e";
                     } else if (answer.includes(box.textContent)) {
+
                         if (answerFrequency[box.textContent] > 0) {
                             box.style.backgroundColor = "#b59f3b";
                             box.style.border = "2px solid #b59f3b";
