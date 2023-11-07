@@ -1,9 +1,4 @@
-var i = 1;
-var j = 1;
 
-var answer = "FOODS";
-
-var gameEnded = false;
 
 const ALL_WORDS = [
     "abaci",
@@ -4601,6 +4596,13 @@ const ALL_WORDS = [
     "zones",
     "zooms"
 ];
+
+var i = 1;
+var j = 1;
+
+var answer = "FOODS";
+
+var gameEnded = false;
 
 function selectWordByDate() {
     const currentDate = new Date();
